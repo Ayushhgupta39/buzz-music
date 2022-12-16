@@ -9,24 +9,24 @@ import { reducerCases } from '../utils/Constants';
 
 
 export default function Navbar({navBackground}) {
-  const [{ token, name },dispatch] = useStateProvider();
-  useEffect(() => { 
-        const getUserName = async () => {
-            const response = await axios.get('https://api.spotify.com/v1/me',{
-                headers: {
-                    Authorization: "Bearer "+ token,
-                    "Content-Type": "application/json"
-                },
-            });
-            const items = response.data;
-            // console.log(items);
+  // const [{ token, name },dispatch] = useStateProvider();
+  // useEffect(() => { 
+  //       const getUserName = async () => {
+  //           const response = await axios.get('https://api.spotify.com/v1/me',{
+  //               headers: {
+  //                   Authorization: "Bearer "+ token,
+  //                   "Content-Type": "application/json"
+  //               },
+  //           });
+  //           const items = response.data;
+  //           // console.log(items);
             
-            dispatch({type:reducerCases.SET_USER, name})
-            return items;
-        }
-        getUserName();
-        console.log(name);
-    },[token]);
+  //           // dispatch({type:reducerCases.SET_USER, name})
+  //           return items;
+  //       }
+  //       getUserName();
+  //       console.log(name);
+  //   },[token]);
 
   return (
     <Container navBackground = {navBackground}>
@@ -37,7 +37,7 @@ export default function Navbar({navBackground}) {
     <div className='avatar'>
     <a href = "#">
       <CgProfile />
-      <span>Ayush</span>
+      <span>User</span>
     </a>
     </div>
     </Container>
