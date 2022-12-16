@@ -9,21 +9,25 @@ import { reducerCases } from '../utils/Constants';
 
 
 export default function Navbar({navBackground}) {
-//   const [{token,userInfo}, dispatch] = useStateProvider();
-//   useEffect(() => {
-//     const getUser = async () => {
-//         const response = await axios.get('https://api.spotify.com/v1/me',{
-//             headers: {
-//                 Authorization: "Bearer "+ token,
-//                 "Content-Type": "application/json"
-//             },
-//         });
-//         const userInfo = response.data.display_name;
-//         dispatch({type:reducerCases.SET_USER, userInfo})
-//     }
-//     // getUser();
-// }, [token, dispatch])
-// console.log(userInfo);  
+  const [{ token, name },dispatch] = useStateProvider();
+  useEffect(() => { 
+        const getUserName = async () => {
+            const response = await axios.get('https://api.spotify.com/v1/me',{
+                headers: {
+                    Authorization: "Bearer "+ token,
+                    "Content-Type": "application/json"
+                },
+            });
+            const items = response.data;
+            // console.log(items);
+            
+            dispatch({type:reducerCases.SET_USER, name})
+            return items;
+        }
+        getUserName();
+        console.log(name);
+    },[token]);
+
   return (
     <Container navBackground = {navBackground}>
     <div className='search_bar'>

@@ -32,7 +32,6 @@ export default function CurrentTrack() {
     } 
     getCurrentTrack();
   }, [token, dispatch]);
-//   console.log(currentlyPlaying);
   return (
     <Container>
       {currentlyPlaying && (

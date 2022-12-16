@@ -25,7 +25,6 @@ export default function Playlists() {
         }
         getPlaylistData();
     }, [token, dispatch]);
-
     const changeCurrentPlaylist = (selectedPlaylistId) => {
         dispatch({ type: reducerCases.SET_PLAYLIST_ID, selectedPlaylistId });
       };

@@ -48,65 +48,6 @@ export default function Body({headerBackground}) {
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
 
-  // const playTrack = async(id, name, artists, image,context_uri, track_number) => {
-  //   const response = await axios.put(
-  //     `https://api.spotify.com/v1/me/player/play`,
-  //     {
-  //       context_uri,
-  //       offset: {
-  //         position: track_number-1
-  //       },
-  //       position_ms: 0,
-  //     },
-  //     {
-  //       headers: {
-  //         Authorization: "Bearer " + token,
-  //         "Content-Type": "application/json",
-  //       },
-  //     }
-  //   );
-  //   if(response.status === 204) {
-  //     const currentPlaying = {
-  //       id,
-  //       name,
-  //       artists,
-  //       image,
-  //     };
-  //     dispatch({type:reducerCases.SET_PLAYING,currentPlaying})
-  //     dispatch({type:reducerCases.SET_PLAYER_STATE,playerState: true});
-  //   }
-  //   else {
-  //     dispatch({type:reducerCases.SET_PLAYER_STATE,playerState: true});
-  //   }
-  // }
-
-//   useEffect(() => {
-//     const getUser = async () => {
-//         const response = await axios.get('https://api.spotify.com/v1/me',{
-//             headers: {
-//                 Authorization: "Bearer "+ token,
-//                 "Content-Type": "application/json"
-//             },
-//         });
-//         const userInfo = response.data;
-//         dispatch({type:reducerCases.SET_USER, userInfo})
-//     }
-//     getUser();
-    
-// }, [userInfo],[])
-
-
-// const getUser = async () => {
-//   const response = await axios.get('https://api.spotify.com/v1/me',{
-//       headers: {
-//           Authorization: "Bearer "+ token,
-//           "Content-Type": "application/json"
-//       },
-//   });
-//   const userInfo = response.data.display_name;
-//   dispatch({type:reducerCases.SET_USER, userInfo})
-// }
-// getUser();
   return (
     <Container headerBackground = {headerBackground}>
       {selectedPlaylist && (

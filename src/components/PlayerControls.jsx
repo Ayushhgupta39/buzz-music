@@ -1,18 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { CiShuffle, CiRepeat } from "react-icons/ci";
 import { IoMdPlay, IoMdRepeat } from "react-icons/io";
-import {
-  ImNext,
-  
-  ImPause2,
-  
- 
-  ImPlay3,
-  ImPrevious,
-  
-} from "react-icons/im";
-import { BiShuffle } from "react-icons/bi"
+import { ImNext, ImPause2, ImPrevious } from "react-icons/im";
+import { BiShuffle } from "react-icons/bi";
 import { useStateProvider } from "../utils/StateProvider";
 import axios from "axios";
 import { reducerCases } from "../utils/Constants";
@@ -53,21 +43,25 @@ export default function PlayerControls() {
       dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying: null });
     }
   };
-  
-  const changeState = async() => {
+
+  const changeState = async () => {
     const state = playerState ? "pause" : "play";
     await axios.put(
-        `https://api.spotify.com/v1/me/player/${state}`,{},
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      dispatch({ type: reducerCases.SET_PLAYER_STATE, playerState: !playerState });
+      `https://api.spotify.com/v1/me/player/${state}`,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    dispatch({
+      type: reducerCases.SET_PLAYER_STATE,
+      playerState: !playerState,
+    });
   };
-  
+
   return (
     <Container>
       <div className="shuffle">
@@ -76,7 +70,13 @@ export default function PlayerControls() {
       <div className="previous">
         <ImPrevious onClick={() => changeTrack("previous")} />
       </div>
-      <div className="sate">{playerState ? <ImPause2 onClick={changeState} /> : <IoMdPlay onClick={changeState} />}</div>
+      <div className="sate">
+        {playerState ? (
+          <ImPause2 onClick={changeState} />
+        ) : (
+          <IoMdPlay onClick={changeState} />
+        )}
+      </div>
       <div className="next">
         <ImNext onClick={() => changeTrack("next")} />
       </div>
