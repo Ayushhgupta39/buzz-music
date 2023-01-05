@@ -29,11 +29,11 @@ export default function Spotify() {
           "Content-Type": "application/json",
         },
       });
-      const UserInfo = {
+      const userInfo = {
         userId: data.id,
         userName: data.display_name,
       };
-      dispatch({ type: reducerCases.SET_USER, UserInfo });
+      dispatch({ type: reducerCases.SET_USER, userInfo });
     };
     getUserInfo();
   }, [dispatch, token]);
@@ -55,6 +55,8 @@ export default function Spotify() {
     </Container>
   );
 }
+export const token = window.location.hash.substring(1).split("&")[0].split("=")[1];
+
 
 const Container = styled.div`
   max-width: 100vw;
