@@ -59,7 +59,7 @@ export default function Footer({ code }) {
           trackArtistColor: "#D6D5A8",
           activeColor: "#CF0A0A",
           sliderColor: "#D6D5A8",
-          sliderTrackColor: "#fff"
+          sliderTrackColor: "#1B2430",
         }}
       />
     </Container>
