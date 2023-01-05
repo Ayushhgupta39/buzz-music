@@ -1,18 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import SpotifyWebPlayer from "react-spotify-web-playback/lib";
 import styled from "styled-components";
 import { reducerCases } from "../utils/Constants";
 import { useStateProvider } from "../utils/StateProvider";
-import CurrentTrack from "./CurrentTrack";
-import Player from "./Player";
-import PlayerControls from "./PlayerControls";
-import Volume from "./Volume";
 
 export default function Footer({ code }) {
   const [{ token, playerState }, dispatch] = useStateProvider();
   const [trackUri, setTrackUri] = useState([]);
-  
+
   useEffect(() => {
     const getTrack = async () => {
       const response = await axios.get(
@@ -24,27 +21,54 @@ export default function Footer({ code }) {
           },
         }
       );
-    }
+    };
     getTrack();
-  },[])
-  
+  }, []);
+
+  useEffect(() => {
+    const getPlaylist = async () => {
+      const response = await axios.get(
+        "https://api.spotify.com/v1/playlists/37i9dQZEVXbpkx8l8SHR7Y",
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setTrackUri(response.data.uri);
+    };
+    getPlaylist();
+  }, []);
+
   return (
     <Container>
-      <CurrentTrack />
-      <PlayerControls />
-      <Volume />
+      <SpotifyWebPlayer
+        token={token}
+        uris={trackUri}
+        //  autoPlay="true"
+        play
+        magnifySliderOnHover="true"
+        name="Buzz-Music"
+        showSaveIcon
+        syncExternalDevice
+        styles={{
+          bgColor: "#1B2430",
+          color: "#D6D5A8",
+          trackNameColor: "#D6D5A8",
+          trackArtistColor: "#D6D5A8",
+          activeColor: "#CF0A0A",
+          sliderColor: "#D6D5A8",
+          sliderTrackColor: "#fff"
+        }}
+      />
     </Container>
   );
 }
 
 const Container = styled.div`
-  background-color: #181818;
-  height: 100%;
-  width: 100%;
-  border-top: 1px solid #282828;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 1rem;
+  background-color: #1b2430;
+  height: 100%;
 `;

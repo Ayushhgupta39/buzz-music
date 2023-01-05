@@ -18,6 +18,8 @@ export default function Login() {
       "user-read-currently-playing",
       "app-remote-control",
       "streaming",
+      "user-follow-modify",
+      "user-follow-read",
     ];
     window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scope.join(
       " "

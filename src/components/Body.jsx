@@ -221,6 +221,9 @@ const Container = styled.div`
             flex-direction: column;
           }
         }
+        .detail:hover {
+          cursor: pointer;
+        }
       }
     }
   }
