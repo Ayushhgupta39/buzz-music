@@ -46,8 +46,7 @@ export default function Footer({ code }) {
       <SpotifyWebPlayer
         token={token}
         uris={trackUri}
-        //  autoPlay="true"
-        play
+        autoPlay="false"
         magnifySliderOnHover="true"
         name="Buzz-Music"
         showSaveIcon

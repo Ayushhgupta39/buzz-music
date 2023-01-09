@@ -1,10 +1,10 @@
-import { useEffect } from "react"
-import React  from 'react'
-import { useStateProvider } from "../utils/StateProvider"
+import { useEffect } from "react";
+import React from "react";
+import { useStateProvider } from "../utils/StateProvider";
 import axios from "axios";
 import { reducerCases } from "../utils/Constants";
 import styled from "styled-components";
-
+import { IoLibrary } from "react-icons/io5";
 
 export default function Playlists() {
   const [{ token, playlists }, dispatch] = useStateProvider();
@@ -32,6 +32,12 @@ export default function Playlists() {
   };
   return (
     <Container>
+      <div className="playlist_heading">
+        <div className="library-icon">
+        <IoLibrary />
+        </div>
+        <span>Your Library</span>
+      </div>
       <ul>
         {playlists.map(({ name, id }) => {
           return (
@@ -46,11 +52,25 @@ export default function Playlists() {
 }
 
 const Container = styled.div`
-height: 100%;
-overflow: hidden;
-display: flex;
-flex-direction: column;
-    ul{
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  .playlist_heading {
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 1rem;
+  }
+  .playlist_heading span {
+    font-size: larger;
+    font-weight: bolder;
+    margin-left: 5px;
+  }
+  .library-icon {
+    font-size: larger;
+  }
+  ul {
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -60,19 +80,19 @@ flex-direction: column;
     max-height: 100%;
     overflow: auto;
     &::-webkit-scrollbar {
-        width: 0.7rem;
-        &-thumb{
-            background-color: rgba(255, 255, 255,.6);
-        }
+      width: 0.7rem;
+      &-thumb {
+        background-color: rgba(255, 255, 255, 0.6);
+      }
     }
   }
-  li{
+  li {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     cursor: pointer;
-    transition: .3s ease-in-out;
-    &:hover{
+    transition: 0.3s ease-in-out;
+    &:hover {
       color: white;
     }
   }

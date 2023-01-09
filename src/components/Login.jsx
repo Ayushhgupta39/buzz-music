@@ -20,6 +20,13 @@ export default function Login() {
       "streaming",
       "user-follow-modify",
       "user-follow-read",
+      "ugc-image-upload",
+      "playlist-read-private",
+      "playlist-read-collaborative",
+      "playlist-modify-private",
+      "playlist-modify-public",
+      "user-library-modify",
+      "user-library-read",
     ];
     window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scope.join(
       " "

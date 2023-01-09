@@ -13,23 +13,20 @@ export default function Navbar({ navBackground }) {
 
   return (
     <Container navBackground={navBackground}>
-      <div className="search_bar">
-        <FaSearch />
-        <input type="text" placeholder="Artists, songs or podcasts" />
-      </div>
       <div className="avatar">
         <a href="#">
           <CgProfile />
           <span> {userInfo?.userName}</span>
         </a>
       </div>
+      
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 2rem;
   height: 15vh;
@@ -38,15 +35,7 @@ const Container = styled.div`
   transition: 0.3s ease-in-out;
   background-color: ${({ navBackground }) =>
     navBackground ? "rgba(0,0,0,0.7)" : "none"};
-  .search_bar {
-    background-color: white;
-    width: 30%;
-    padding: 0.4rem 1rem;
-    border-radius: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+  
   input {
     border: none;
     height: 2rem;
