@@ -4,7 +4,8 @@ import styled from "styled-components";
 export default function Login() {
   const handleClick = () => {
     const clientId = "cfd4ec7cbad84813a3b5fb11062ae454";
-    const redirectUrl = "http://localhost:3000/";
+    // const redirectUrl = "http://localhost:3000/";
+    const redirectUrl = "https://buzz-music-ayushhgupta39.vercel.app/";
     const apiUrl = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-email",
